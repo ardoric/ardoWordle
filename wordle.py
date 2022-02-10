@@ -31,9 +31,8 @@ if __name__ == '__main__':
 			print words
 		print len(words), guess
 		if len(sys.argv) > 1:
-			r = match(guess, sys.argv[1])
-			print r
 			r = match(sys.argv[1], guess)
+			print r
 		else:
 			r = raw_input()
 		words = trimwords(words, guess, r)
