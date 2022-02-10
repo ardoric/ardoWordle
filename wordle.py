@@ -25,7 +25,7 @@ def match(known, guess):
 	# yellow pass
 	# mark yellows and make sure to remove already used letters from target
 	for (i,c) in enumerate(guess):
-		if res[i] != 'g' and c in known:
+		if c in known:
 			res[i] = 'y'
 			known[known.index(c)] = '_'
 	
