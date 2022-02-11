@@ -23,3 +23,6 @@ class TestWordle(unittest.TestCase):
 		self.assertEquals(match('abbey', 'orbit'), 'bbgbb')
 		self.assertEquals(match('abbey', 'abate'), 'ggbby')
 		self.assertEquals(match('abbey', 'abbey'), 'ggggg')
+
+if __name__ == '__main__':
+	unittest.main(argv=[''],verbosity=2, exit=False)
