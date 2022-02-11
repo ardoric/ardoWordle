@@ -21,14 +21,21 @@ def match(known, guess):
 		if c == known[i]:
 			res[i] = 'g'
 			known[i] = '_'
+
+	# print ''.join(known), ''.join(res)
 	
 	# yellow pass
 	# mark yellows and make sure to remove already used letters from target
 	for (i,c) in enumerate(guess):
+		if res[i] == 'g':
+			continue
+
 		if c in known:
 			res[i] = 'y'
 			known[known.index(c)] = '_'
 	
+	# print ''.join(known)
+
 	# undo the hack
 	# to those unfamiliar this creates a string by joining all the strings
 	# in a list separated by ''
