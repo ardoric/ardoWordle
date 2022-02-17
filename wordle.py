@@ -45,6 +45,26 @@ def match(known, guess):
 def trimwords(wordlist, guess, res):
 	return [ w for w in wordlist if match(w, guess) == res ]
 
+# asks for valid input
+# check: boolean returning function that validates input
+# message: message to be shown in case input is invalid
+def ask(check, message='invalid input'):
+	r = raw_input()
+	while not check(r):
+		print message
+		r = raw_input()
+	return r
+
+# validates input for our little program
+# strings have to be 5 characters in length
+# all characters have to belong to the set of valid characters
+def validate_input(s):
+	if len(s) != 5:
+		return False
+	for c in s:
+		if c not in 'byg':
+			return False
+	return True
 
 if __name__ == '__main__':
 	words = json.load(gzip.open('words.json.gz'))
@@ -57,7 +77,7 @@ if __name__ == '__main__':
 			r = match(sys.argv[1], guess)
 			print r
 		else:
-			r = raw_input()
+			r = ask(validate_input)
 		words = trimwords(words, guess, r)
 	print 'answer:', words[0]
 

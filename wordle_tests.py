@@ -23,6 +23,23 @@ class TestWordle(unittest.TestCase):
 		self.assertEquals(match('abbey', 'orbit'), 'bbgbb')
 		self.assertEquals(match('abbey', 'abate'), 'ggbby')
 		self.assertEquals(match('abbey', 'abbey'), 'ggggg')
+	
+	def test_validate_valid(self):
+		self.assertTrue(validate_input('ggggg'))
+		self.assertTrue(validate_input('bbbbb'))
+		self.assertTrue(validate_input('yyyyy'))
+		self.assertTrue(validate_input('ggbby'))
+	
+	def test_validate_invalid(self):
+		self.assertFalse(validate_input('gggggg'))
+		self.assertFalse(validate_input(''))
+		self.assertFalse(validate_input(' '))
+		self.assertFalse(validate_input('g'))
+		self.assertFalse(validate_input('bb'))
+		self.assertFalse(validate_input('yyy'))
+		self.assertFalse(validate_input('bbyg'))
+		self.assertFalse(validate_input('ggcgg'))
+
 
 if __name__ == '__main__':
 	unittest.main(argv=[''],verbosity=2, exit=False)
